@@ -1,0 +1,120 @@
+<div class="login-page-body">
+  <div class="container">
+    <div class="col-md-5 mx-auto">
+
+      <!-- Login Card -->
+      <div *ngIf="currentTab==1" class="card shadow card-login">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12 mx-auto">
+              <h2 class="login-label">Login</h2>
+            </div>
+          </div>
+          <br>
+          <form ngNativeValidate class="form" #form1 (ngSubmit)="form1.checkValidity()? signInManually() : null">
+            <input type="email" class="form-control login-input" name="login.email" [(ngModel)]="login.email"
+              required autocomplete="off" placeholder="Username"><br>
+            <input type="password" class="form-control login-input" name="login.password" [(ngModel)]="login.password"
+              required autocomplete="off" placeholder="Password"><br>
+            <button type="submit" class="btn btn-success shadow col-md-12">Login</button>
+            <br>
+            <hr>
+            <p class="text-muted text-center">
+              OR
+            </p>
+            <div class="row no-gutters">
+              <div class="col-md-6">
+                <button class="btn btn-google" (click)="signInWithGoogle()" type="button"><i class="fab fa-google"> </i>
+                  Login with Google</button>
+              </div>
+              <div class="col-md-6">
+                <button class="btn btn-fb" (click)="signInWithFB()" type="button"><i class="fab fa-facebook-f"> </i>
+                  Login with Facebook</button>
+              </div>
+            </div>
+            <br>
+          </form>
+        </div>
+        <div class="card-footer">
+          <div class="row text-center">
+            <div class="col-md-12">
+              Don't have account ?
+              <button class="btn btn-signup btn-sm" (click)="gotoSignUp()" type="button">
+                Sign up</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Login Card End -->
+
+      <!-- SignUp Card -->
+      <div *ngIf="currentTab==2" class="card shadow card-login">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12 mx-auto">
+              <h2 class="login-label">Sign Up</h2>
+            </div>
+          </div>
+          <br>
+          <form ngNativeValidate class="form" #form2 (ngSubmit)="form2.checkValidity()? signUpManually() : null">
+            <input type="text" class="form-control login-input" name="signup.name" [(ngModel)]="signup.name" required
+              autocomplete="off" placeholder="Name"><br>
+            <div class="form-group">
+              <div class="input-group">
+                <input class="form-control login-input" (keypress)="restrictKeypress($event)" required
+                  autocomplete="off" placeholder="Date of Birth" name="user.dob" [(ngModel)]="signup.dob" value="signup.dob"
+                  ngbDatepicker #d="ngbDatepicker">
+                <div class="input-group-append">
+                  <button class="btn btn-secondary login-input" (click)="d.toggle()" type="button"><i
+                      class="far fa-calendar-alt"></i></button>
+                </div>
+              </div>
+            </div><br>
+            <div class="form-group">
+              <select name="signup.gender" class="form-control" [(ngModel)]="signup.gender" required>
+                <option selected disabled value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select><br>
+              <input type="email" class="form-control login-input" name="signup.email" [(ngModel)]="signup.email"
+                required autocomplete="off" placeholder="Email"><br>
+              <input type="password" class="form-control login-input" name="signup.password"
+                [(ngModel)]="signup.password" required autocomplete="off" placeholder="Password"><br>
+            </div>
+            <button type="submit" type="submit" class="btn btn-info shadow col-md-12">Sign
+              Up</button>
+            <br>
+            <hr>
+            <p class="text-muted text-center">
+              OR
+            </p>
+            <div class="row no-gutters">
+              <div class="col-md-6">
+                <button class="btn btn-google" (click)="signUpWithGoogle()" type="button"><i class="fab fa-google"> </i>
+                  Sign up with Google</button>
+              </div>
+              <div class="col-md-6">
+                <button class="btn btn-fb" (click)="signUpWithFB()" type="button"><i class="fab fa-facebook-f"> </i>
+                  Sign up with Facebook</button>
+              </div>
+            </div>
+            <br>
+          </form>
+        </div>
+        <div class="card-footer">
+          <div class="row text-center">
+            <div class="col-md-12">
+              Already have an account ?
+              <button class="btn btn-signup btn-sm" (click)="gotoLogin()" type="button">
+                Login</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- SignUp Card End -->
+
+
+    </div>
+  </div>
+</div>

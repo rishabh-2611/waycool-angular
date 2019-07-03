@@ -1,0 +1,149 @@
+<div class="dashboard-page-body">
+  <app-navbar></app-navbar>
+  <div class="row no-gutters">
+    <div class="col-md-1">
+      <div class="sidebar-wrapper">
+        <app-sidebar></app-sidebar>
+      </div>
+    </div>
+    <div class="col-md-11 mt-5">
+      <div class="row mr-1">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="dashboard-icon-google">
+                        <i class="fab fa-google"> </i>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <h5 class="mt-2">Google Login counts</h5>
+                      <h2>{{googleLogins}}</h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="dashboard-icon-fb">
+                        <i class="fab fa-facebook-f"> </i>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <h5 class="mt-2">Facebook Login counts</h5>
+                      <h2>{{facebookLogins}}</h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="dashboard-icon-email">
+                        <i class="fas fa-at"> </i>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <h5 class="mt-2">Email Login counts</h5>
+                      <h2>{{emailLogins}}</h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="dashboard-icon-users">
+                          <i class="fas fa-clipboard-list"></i>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <h5 class="mt-2">Total Logs</h5>
+                      <h2>{{totalLogs}}</h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br><br>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="card shadow">
+                    <div class="card-header">
+                      Log Reports
+                    </div>
+                    <div class="card-body">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Activity</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Email</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let log of logs">
+                            <th scope="row">{{ log.id }}</th>
+                            <td>
+                              <img [src]="log.photoUrl" class="table-images">
+                              {{ log.name }}
+                            </td>
+                            <td>{{ log.activity}}</td>
+                            <td>{{ log.date }}</td>
+                            <td>{{ log.time }}</td>
+                            <td>{{ log.email }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                      <div class="d-flex justify-content-between p-2">
+                        <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize">
+                        </ngb-pagination>
+
+                        <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
+                          <option [ngValue]="2">2 items per page</option>
+                          <option [ngValue]="4">4 items per page</option>
+                          <option [ngValue]="6">6 items per page</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card shadow">
+                    <div class="card-body">
+                      <div class="doughnut-wrapper" style="display: block;">
+                        <canvas class="doughnut" baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels"
+                          [chartType]="doughnutChartType" [colors]="chartColors">
+                        </canvas>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

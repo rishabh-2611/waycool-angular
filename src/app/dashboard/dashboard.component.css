@@ -1,0 +1,43 @@
+.dashboard-page-body {
+  background-color: #eee;
+  min-height: -webkit-fill-available;
+}
+.dashboard-icon-google {
+  text-align: center;
+  background-color: #dd4b39;
+  color: #fff;
+  font-size: 48px;
+  padding: 10px;
+}
+.dashboard-icon-fb {
+  text-align: center;
+  background-color: #3b5998;
+  color: #fff;
+  font-size: 48px;
+  padding: 10px;
+}
+.dashboard-icon-email {
+  text-align: center;
+  background-color: #ff822e;
+  color: #fff;
+  font-size: 48px;
+  padding: 10px;
+}
+.dashboard-icon-users {
+  text-align: center;
+  background-color: #15aabf;
+  color: #fff;
+  font-size: 48px;
+  padding: 10px;
+}
+.card,
+.card-body {
+  padding: 0px;
+}
+.doughnut-wrapper {
+  padding-top: 8%; 
+  padding-bottom: 12%; 
+}
+.table-images{
+  width: 20px;
+}

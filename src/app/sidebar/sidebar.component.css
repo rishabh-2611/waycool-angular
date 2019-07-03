@@ -1,0 +1,17 @@
+.option-panel {
+  background-color: rgb(32, 31, 31) !important;
+  height: 100% !important;
+  text-align: center;
+  position: fixed;
+  padding: 20px;
+}
+.option-panel a {
+  color: grey;
+  margin-top: 8px;
+  font-size: 28px;
+  padding: 20%;
+  text-decoration: none;
+}
+.option-panel a:hover {
+  color: rgb(251, 180, 26) !important;
+}
