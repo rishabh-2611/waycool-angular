@@ -19,7 +19,7 @@ export class LogService {
   // Fetch Logs
   fetchLogReports(): Observable<any> {
     return this.http.get(
-      "http://localhost:3000/getLogReports",
+      "https://waycool-node-express-server.herokuapp.com/getLogReports",
       this.httpOptions
     );
   }

@@ -33,7 +33,7 @@ export class UserService {
   // SignIn
   userSignIn(user): Observable<any> {
     return this.http.post(
-      "http://localhost:3000/userSignIn",
+      "https://waycool-node-express-server.herokuapp.com/userSignIn",
       JSON.stringify(user),
       this.httpOptions
     );
@@ -42,7 +42,7 @@ export class UserService {
   // Signup
   userSignUp(user): Observable<any> {
     return this.http.post(
-      "http://localhost:3000/userSignUp",
+      "https://waycool-node-express-server.herokuapp.com/userSignUp",
       JSON.stringify(user),
       this.httpOptions
     );
@@ -64,7 +64,7 @@ export class UserService {
   // Fetch User Info
   fetchUserInfo(email): Observable<any> {
     return this.http.post(
-      "http://localhost:3000/getUserInfo",
+      "https://waycool-node-express-server.herokuapp.com/getUserInfo",
       JSON.stringify(email),
       this.httpOptions
     );
@@ -73,7 +73,7 @@ export class UserService {
   // Edit DOB and Gender (if not present)
   editUserInfo(user): Observable<any> {
     return this.http.post(
-      "http://localhost:3000/editUserInfo",
+      "https://waycool-node-express-server.herokuapp.com/editUserInfo",
       JSON.stringify(user),
       this.httpOptions
     );
@@ -99,7 +99,7 @@ export class UserService {
   // Link User Account with Google
   linkWithGoogle(user): Observable<any> {
     return this.http.post(
-      "http://localhost:3000/linkWithGoogle",
+      "https://waycool-node-express-server.herokuapp.com/linkWithGoogle",
       JSON.stringify(user),
       this.httpOptions
     );
@@ -108,7 +108,7 @@ export class UserService {
   // Link User Account with Facebook
   linkWithFacebook(user): Observable<any> {
     return this.http.post(
-      "http://localhost:3000/linkWithFacebook",
+      "https://waycool-node-express-server.herokuapp.com/linkWithFacebook",
       JSON.stringify(user),
       this.httpOptions
     );
@@ -117,7 +117,7 @@ export class UserService {
   // Delete Account
   deleteAccount(user): Observable<any> {
     return this.http.post(
-      "http://localhost:3000/deleteAccount",
+      "https://waycool-node-express-server.herokuapp.com/deleteAccount",
       JSON.stringify(user),
       this.httpOptions
     );
