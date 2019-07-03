@@ -15,8 +15,10 @@
                 <div class="text-center">
                   <div class="row">
                     <div class="col-md-8 mx-auto">
-                      <img *ngIf="userInfo.photoUrl == null" src="../../assets/images/default.jpeg" class="image mt-2" />
-                      <img *ngIf="userInfo.photoUrl !=''" [src]="userInfo.photoUrl" class="image mt-2" />
+                      <img *ngIf="userInfo.photoUrl !='';else default" [src]="userInfo.photoUrl" class="image mt-2" />
+                      <ng-template #default>
+                        <img else src="../../assets/images/default.jpeg" class="image mt-2" />
+                      </ng-template>
                     </div>
                   </div>
                 </div>
@@ -39,47 +41,50 @@
 
                 <hr>
                 <form ngNativeValidate class="form" #form (ngSubmit)="form.checkValidity()? onEdit() : null">
-                  <div class="input-group">
-                    <b>Name : </b>
-                    <input type="text" class="form-control login-input" name="userInfo.name" [(ngModel)]="userInfo.name"
-                      required autocomplete="off" disabled>
-                  </div><br>
-                  <div class="input-group">
-                    <b>Email : </b>
-                    <input type="email" class="form-control login-input" name="userInfo.email"
-                      [(ngModel)]="userInfo.email" autocomplete="off" disabled>
-                  </div><br>
-                  <div class="form-group">
-                    <div *ngIf="userInfo.dob == ''" class="input-group">
-                      <b>DOB : </b>
-                      <input class="form-control login-input" (keypress)="restrictKeypress($event)" autocomplete="off"
-                        name="edit.dob" [(ngModel)]="edit.dob" required ngbDatepicker #d="ngbDatepicker"
-                        placeholder="yyyy-mm-dd">
-                      <div class="input-group-append">
-                        <button class="btn btn-secondary login-input" (click)="d.toggle()" type="button"><i
-                            class="far fa-calendar-alt"></i></button>
-                      </div>
-                    </div>
-                    <div *ngIf="userInfo.dob != ''" class="input-group">
-                      <b>DOB : </b>
-                      <input type="email" class="form-control login-input" name="userInfo.dob"
-                        [(ngModel)]="userInfo.dob" autocomplete="off" disabled>
-                    </div><br>
-                  </div>
-                  <div class="input-group">
-                    <b>Gender : </b>
 
-                    <select *ngIf="userInfo.gender == '-'" class="form-control" name="edit.gender"
-                      [(ngModel)]="edit.gender" required>
-                      <option selected value="">Select Gender</option>
-                      <option value="male">Male</option>
-                      <option value="female">Female</option>
-                      <option value="other">Other</option>
-                    </select>
-
-                    <input *ngIf="userInfo.gender != '-'" type="text" class="form-control login-input"
-                      name="userInfo.gender" [(ngModel)]="userInfo.gender" autocomplete="off" disabled>
-                  </div><br>
+                  <table>
+                    <tr>
+                      <td style="width:8%"><b>Name : </b></td>
+                      <td style="width:50%"><input type="text" class="form-control login-input" name="userInfo.name"
+                          [(ngModel)]="userInfo.name" required autocomplete="off" disabled></td>
+                    </tr><br>
+                    <tr>
+                      <td><b>Email : </b></td>
+                      <td><input type="email" class="form-control login-input" name="userInfo.email"
+                          [(ngModel)]="userInfo.email" autocomplete="off" disabled></td>
+                    </tr><br>
+                    <tr *ngIf="userInfo.dob == ''">
+                      <td><b>DOB : </b></td>
+                      <td><input class="form-control login-input" (keypress)="restrictKeypress($event)"
+                          autocomplete="off" name="edit.dob" [(ngModel)]="edit.dob" required ngbDatepicker
+                          #d="ngbDatepicker" placeholder="yyyy-mm-dd">
+                        <div class="input-group-append">
+                          <button class="btn btn-secondary login-input" (click)="d.toggle()" type="button"><i
+                              class="far fa-calendar-alt"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr *ngIf="userInfo.dob != ''">
+                      <td><b>DOB : </b></td>
+                      <td><input type="email" class="form-control login-input" name="userInfo.dob"
+                          [(ngModel)]="userInfo.dob" autocomplete="off" disabled></td>
+                    </tr><br>
+                    <tr>
+                      <td><b>Gender : </b></td>
+                      <td *ngIf="userInfo.gender == '-'">
+                        <select *ngIf="userInfo.gender == '-'" class="form-control" name="edit.gender"
+                          [(ngModel)]="edit.gender" required>
+                          <option selected value="">Select Gender</option>
+                          <option value="male">Male</option>
+                          <option value="female">Female</option>
+                          <option value="other">Other</option>
+                        </select></td>
+                      <td *ngIf="userInfo.gender != '-'">
+                        <input *ngIf="userInfo.gender != '-'" type="text" class="form-control login-input"
+                          name="userInfo.gender" [(ngModel)]="userInfo.gender" autocomplete="off" disabled>
+                      </td>
+                    </tr>
+                  </table><br>
                   <div class="text-right">
                     <button class="btn btn-info btn-sm" type="submit">Save Changes</button>
                   </div>
@@ -119,7 +124,8 @@
                 <b>Delete Account</b>
                 <div class="row">
                   <div class="col-md-6">
-                    <button class="btn btn-outline-danger btn-block" type="button" (click)="deleteAccount()"><i class="fas fa-trash-alt mr-2"></i>
+                    <button class="btn btn-outline-danger btn-block" type="button" (click)="deleteAccount()"><i
+                        class="fas fa-trash-alt mr-2"></i>
                       Delete Account</button>
                   </div>
                 </div>
