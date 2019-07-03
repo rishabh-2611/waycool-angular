@@ -78,8 +78,6 @@ export class LoginComponent implements OnInit {
         .subscribe(res => {
           if (res.isValid == true) {
             localStorage.setItem("email", this.login.email);
-
-            console.log(res.message);
             this.fetchUserInfo();
           } else {
             alert(res.message);
@@ -103,8 +101,6 @@ export class LoginComponent implements OnInit {
         .subscribe(res => {
           if (res.isValid == true) {
             localStorage.setItem("email", user.email);
-
-            console.log(res.message);
             this.fetchUserInfo();
           } else {
             alert(res.message);
@@ -128,8 +124,6 @@ export class LoginComponent implements OnInit {
         .subscribe(res => {
           if (res.isValid == true) {
             localStorage.setItem("email", user.email);
-
-            console.log(res.message);
             this.fetchUserInfo();
           } else {
             alert(res.message);
@@ -168,7 +162,6 @@ export class LoginComponent implements OnInit {
       .subscribe(res => {
         if (res.isValid == true) {
           localStorage.setItem("email", this.signup.email);
-          console.log(res.message);
           this.fetchUserInfo();
         } else {
           alert(res.message);
@@ -203,7 +196,6 @@ export class LoginComponent implements OnInit {
           if (res.isValid == true) {
             localStorage.setItem("email", user.email);
             localStorage.setItem("name", user.name);
-            console.log(res.message);
             this.fetchUserInfo();
           } else {
             alert(res.message);
@@ -241,8 +233,6 @@ export class LoginComponent implements OnInit {
           if (res.isValid == true) {
             localStorage.setItem("email", user.email);
             localStorage.setItem("name", user.name);
-            console.log(res.message);
-
             this.fetchUserInfo();
           } else {
             alert(res.message);
@@ -254,7 +244,6 @@ export class LoginComponent implements OnInit {
   }
 
   fetchUserInfo() {
-    console.log(localStorage.getItem("email"));
     this.logService.callFetchLogReports();
     this.userService
       .fetchUserInfo({
@@ -262,7 +251,6 @@ export class LoginComponent implements OnInit {
       })
       .subscribe(res => {
         if (res) {
-          console.log(res);
           this.userService.setUserInfo(res);
           this.router.navigate(["/profile"]);
         } else {
@@ -283,5 +271,4 @@ export class LoginComponent implements OnInit {
   signOut(): void {
     this.authService.signOut();
   }
-
 }

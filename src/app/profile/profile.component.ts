@@ -10,6 +10,17 @@ import {
   GoogleLoginProvider
 } from "angularx-social-login";
 
+// export class UserInfo {
+//   _id: String;
+//   name: String;
+//   email: String;
+//   dob: String;
+//   gender: String;
+//   photoUrl: String;
+//   google: String;
+//   facebook: String;
+// }
+
 @Component({
   selector: "app-profile",
   templateUrl: "./profile.component.html",
@@ -29,19 +40,11 @@ export class ProfileComponent implements OnInit {
     gender: String
   };
 
+  userInfo : any ;
+  // userInfo = new UserInfo();
+
   user: SocialUser;
   loggedIn: boolean;
-
-  userInfo = {
-    _id: String,
-    name: String,
-    email: String,
-    dob: String,
-    gender: String,
-    photoUrl: String,
-    google: String,
-    facebook: String
-  };
 
   constructor(
     private injector: Injector,
@@ -55,7 +58,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(!localStorage.getItem("email")){
+    if (!localStorage.getItem("email")) {
       this.router.navigate([""]);
     }
     this.authService.authState.subscribe(user => {

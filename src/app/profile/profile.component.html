@@ -15,7 +15,7 @@
                 <div class="text-center">
                   <div class="row">
                     <div class="col-md-8 mx-auto">
-                      <img *ngIf="userInfo.photoUrl ==''" src="../../assets/images/default.jpeg" class="image mt-2" />
+                      <img *ngIf="userInfo.photoUrl == null" src="../../assets/images/default.jpeg" class="image mt-2" />
                       <img *ngIf="userInfo.photoUrl !=''" [src]="userInfo.photoUrl" class="image mt-2" />
                     </div>
                   </div>
