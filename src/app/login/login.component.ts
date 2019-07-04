@@ -40,6 +40,8 @@ export class LoginComponent implements OnInit {
 
   currentTab = 1;
 
+  isLogingIn = false;
+
   router: Router;
 
   constructor(
@@ -59,6 +61,7 @@ export class LoginComponent implements OnInit {
       this.user = user;
       this.loggedIn = user != null;
     });
+    localStorage.clear();
   }
 
   restrictKeypress($e) {
@@ -68,6 +71,7 @@ export class LoginComponent implements OnInit {
   // User SignIn Methods
 
   signInManually() {
+    this.isLogingIn = true;
     try {
       this.userService
         .userSignIn({
@@ -136,6 +140,7 @@ export class LoginComponent implements OnInit {
 
   // User SignUp Methods
   signUpManually() {
+    this.isLogingIn = true;
     this.userService
       .userSignUp({
         name: this.signup.name,

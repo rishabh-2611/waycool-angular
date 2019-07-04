@@ -65,7 +65,10 @@ export class ProfileComponent implements OnInit {
       this.user = user;
       this.loggedIn = user != null;
     });
-    this.userInfo = this.userService.getUserInfo();
+    if(!localStorage.getItem("userInfo")){
+      localStorage.setItem('userInfo', JSON.stringify(this.userService.getUserInfo()));
+    }
+    this.userInfo = JSON.parse(localStorage.getItem("userInfo"));
   }
 
   restrictKeypress($e) {

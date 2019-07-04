@@ -6,6 +6,7 @@ import { AppComponent } from "./app.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { HttpClientModule } from "@angular/common/http";
 import { ChartsModule } from "ng2-charts";
+import { HashLocationStrategy, LocationStrategy } from "@angular/common";
 
 // Components
 import { LoginComponent } from "./login/login.component";
@@ -29,7 +30,7 @@ let config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
     provider: new GoogleLoginProvider(
-     "202677417562-gcm2r6uuqmi1ue8cui58vgck30g8hb9p.apps.googleusercontent.com"// "866475992639-g11am069tl1mcppmnv3tco3uqbevjhe1.apps.googleusercontent.com"
+      "202677417562-gcm2r6uuqmi1ue8cui58vgck30g8hb9p.apps.googleusercontent.com" // "866475992639-g11am069tl1mcppmnv3tco3uqbevjhe1.apps.googleusercontent.com"
     )
   },
   {
@@ -58,11 +59,16 @@ export function provideConfig() {
     routes,
     SocialLoginModule,
     HttpClientModule,
-    ChartsModule],
+    ChartsModule
+  ],
   providers: [
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig
+    },
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
     },
     UserService,
     LogService

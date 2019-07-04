@@ -12,11 +12,16 @@
           </div>
           <br>
           <form ngNativeValidate class="form" #form1 (ngSubmit)="form1.checkValidity()? signInManually() : null">
-            <input type="email" class="form-control login-input" name="login.email" [(ngModel)]="login.email"
-              required autocomplete="off" placeholder="Username"><br>
+            <input type="email" class="form-control login-input" name="login.email" [(ngModel)]="login.email" required
+              autocomplete="off" placeholder="Username"><br>
             <input type="password" class="form-control login-input" name="login.password" [(ngModel)]="login.password"
               required autocomplete="off" placeholder="Password"><br>
-            <button type="submit" class="btn btn-success shadow col-md-12">Login</button>
+            <button *ngIf="isLogingIn == false" type="submit" class="btn btn-success shadow col-md-12">
+              Login
+            </button>
+            <button *ngIf="isLogingIn == true" type="button" [disabled] class="btn btn-success disabled shadow col-md-12">
+              <img class="ml-2" src="../../assets/images/spinner.gif" width="30px" height="30px">
+            </button>
             <br>
             <hr>
             <p class="text-muted text-center">
@@ -62,8 +67,8 @@
             <div class="form-group">
               <div class="input-group">
                 <input class="form-control login-input" (keypress)="restrictKeypress($event)" required
-                  autocomplete="off" placeholder="Date of Birth" name="user.dob" [(ngModel)]="signup.dob" value="signup.dob"
-                  ngbDatepicker #d="ngbDatepicker">
+                  autocomplete="off" placeholder="Date of Birth" name="user.dob" [(ngModel)]="signup.dob"
+                  value="signup.dob" ngbDatepicker #d="ngbDatepicker">
                 <div class="input-group-append">
                   <button class="btn btn-secondary login-input" (click)="d.toggle()" type="button"><i
                       class="far fa-calendar-alt"></i></button>
@@ -82,8 +87,11 @@
               <input type="password" class="form-control login-input" name="signup.password"
                 [(ngModel)]="signup.password" required autocomplete="off" placeholder="Password"><br>
             </div>
-            <button type="submit" type="submit" class="btn btn-info shadow col-md-12">Sign
+            <button *ngIf="isLogingIn == false" type="submit" class="btn btn-info shadow col-md-12">Sign
               Up</button>
+            <button *ngIf="isLogingIn == true" type="button" [disabled] class="btn btn-info disabled shadow col-md-12"><img
+                class="ml-2" src="../../assets/images/spinner.gif" width="30px" height="30px"></button>
+
             <br>
             <hr>
             <p class="text-muted text-center">

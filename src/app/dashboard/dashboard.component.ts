@@ -88,7 +88,11 @@ export class DashboardComponent implements OnInit {
     if (!localStorage.getItem("email")) {
       this.router.navigate([""]);
     }
-    LOGS = this.logService.getLogReports();
+    if(!localStorage.getItem("logs")){
+      localStorage.setItem('logs', JSON.stringify(this.logService.getLogReports()));
+    }
+    LOGS = JSON.parse(localStorage.getItem("logs"));
+    
     this.collectionSize = LOGS.length;
 
     this.googleLogins = LOGS.filter(function(LOGS) {
@@ -107,8 +111,7 @@ export class DashboardComponent implements OnInit {
     this.facebookLogins = this.facebookLogins.length;
     this.emailLogins = this.emailLogins.length;
     this.totalLogs = LOGS.length;
-  }
-  ngAfterViewInit() {
+
     this.doughnutChartData = [
       [this.googleLogins, this.facebookLogins, this.emailLogins]
     ];

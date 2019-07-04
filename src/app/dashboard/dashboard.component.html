@@ -1,6 +1,6 @@
 <div class="dashboard-page-body">
   <app-navbar></app-navbar>
-  <div class="row no-gutters">
+  <div class="row no-gutters mt-5">
     <div class="col-md-1">
       <div class="sidebar-wrapper">
         <app-sidebar></app-sidebar>
@@ -120,9 +120,9 @@
                         </ngb-pagination>
 
                         <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
-                          <option [ngValue]="2">2 items per page</option>
                           <option [ngValue]="4">4 items per page</option>
                           <option [ngValue]="6">6 items per page</option>
+                          <option [ngValue]="8">8 items per page</option>
                         </select>
                       </div>
                     </div>
